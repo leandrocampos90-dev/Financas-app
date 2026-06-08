@@ -34,6 +34,7 @@ function fm(v){return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"}
 function R(){
   var root=document.getElementById("app");
   var tx=S.txs.filter(function(t){return new Date(t.dt+"T12:00:00").getMonth()===S.mo;});
+  tx.sort(function(a,b){return b.dt>a.dt?1:-1;});
   var en=0,sa=0;tx.forEach(function(t){t.tp==="entrada"?en+=t.v:sa+=t.v;});
   var sl=en-sa;
   var cm={};tx.filter(function(t){return t.tp==="saida";}).forEach(function(t){cm[t.cat]=(cm[t.cat]||0)+t.v;});
@@ -85,14 +86,17 @@ function setFCat(c){S.f.cat=c;R();}
 function addTx(){
   if(!S.f.desc||!S.f.val||!S.f.dt)return;
   S.sy=true;R();
-  window.db.collection("lancamentos").add({tp:S.f.tp,cat:S.f.cat,desc:S.f.desc,v:parseFloat(S.f.val),dt:S.f.dt,ts:firebase.firestore.FieldValue.serverTimestamp()})
+  window.db.collection("lancamentos").add({tp:S.f.tp,cat:S.f.cat,desc:S.f.desc,v:parseFloat(S.f.val),dt:S.f.dt})
   .then(function(){S.f.desc="";S.f.val="";S.tab="dashboard";S.sy=false;R();})
   .catch(function(e){console.error(e);S.sy=false;R();});
 }
 function rmTx(id){window.db.collection("lancamentos").doc(id).delete();}
 firebase.initializeApp({apiKey:"AIzaSyBXxjHAmRol8vjR_9R_QKRQhEfmjfY_j6M",authDomain:"financas-app-1f0e2.firebaseapp.com",projectId:"financas-app-1f0e2",storageBucket:"financas-app-1f0e2.firebasestorage.app",messagingSenderId:"232492020551",appId:"1:232492020551:web:705005c954d90962eb9262"});
 window.db=firebase.firestore();
-window.db.collection("lancamentos").orderBy("dt","desc").onSnapshot(function(snap){S.txs=snap.docs.map(function(d){return Object.assign({id:d.id},d.data());});R();},function(e){console.error(e);R();});
+window.db.collection("lancamentos").onSnapshot(function(snap){
+  S.txs=snap.docs.map(function(d){return Object.assign({id:d.id},d.data());});
+  R();
+},function(e){console.error(e);R();});
 </script>
 </body>
 </html>
