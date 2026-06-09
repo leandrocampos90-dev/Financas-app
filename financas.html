@@ -9,174 +9,221 @@
 <title>Controle de Caixa</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0A0800;font-family:Georgia,serif;color:#F5ECD0;min-height:100vh}
-.wrap{max-width:480px;margin:0 auto}
-.hdr{padding:40px 20px 16px;background:rgba(10,7,0,.95);border-bottom:1px solid rgba(212,175,55,.3)}
-.title{text-align:center;margin-bottom:16px}
-.sub{font-size:10px;letter-spacing:5px;color:#D4AF37;font-family:monospace;margin-bottom:6px}
-.main{font-size:24px;font-weight:700;color:#D4AF37}
-.months{display:flex;gap:4px;overflow-x:auto;margin-bottom:14px}
-.mbtn{min-width:36px;padding:4px 6px;border-radius:20px;font-size:11px;cursor:pointer;font-family:monospace;border:1px solid rgba(212,175,55,.3);background:transparent;color:#777}
-.mbtn.on{background:#D4AF37;color:#000;border-color:#D4AF37;font-weight:700}
-.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.card{border-radius:12px;padding:10px 8px;text-align:center}
-.clbl{font-size:10px;color:#555;font-family:monospace;margin-bottom:4px}
-.cval{font-size:11px;font-weight:700;font-family:monospace}
-.tabs{display:flex;background:rgba(5,4,0,.95);border-bottom:1px solid rgba(212,175,55,.2)}
-.tbtn{flex:1;padding:12px 4px;background:transparent;border:none;border-bottom:2px solid transparent;color:#555;font-size:12px;cursor:pointer;font-family:inherit}
-.tbtn.on{border-bottom-color:#D4AF37;color:#D4AF37}
-.body{padding:16px 16px 60px}
-.sec{background:rgba(10,8,1,.9);border:1px solid rgba(212,175,55,.25);border-radius:14px;padding:16px;margin-bottom:14px}
-.stitle{font-size:11px;color:#D4AF37;font-family:monospace;letter-spacing:2px;margin-bottom:12px}
-.row{display:flex;justify-content:space-between;margin-bottom:8px;align-items:center}
-.lbl{font-size:13px;color:#999}
-.val{font-size:14px;font-weight:700;font-family:monospace}
-.bar-bg{height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;margin:3px 0}
-.bar-fill{height:100%;background:linear-gradient(90deg,#8B7320,#D4AF37);border-radius:3px}
-.tip{background:rgba(6,4,14,.9);border:1px solid rgba(212,175,55,.15);border-radius:14px;padding:14px}
-.tiplbl{font-size:11px;color:#F0D060;font-family:monospace;letter-spacing:2px;margin-bottom:6px}
-.tipt{font-size:12px;color:#888;line-height:1.7}
-.tx{display:flex;align-items:center;gap:12px;background:rgba(10,8,1,.9);border:1px solid rgba(212,175,55,.25);border-radius:12px;padding:12px 14px;margin-bottom:8px}
-.tx-ico{font-size:22px}
-.tx-info{flex:1}
-.tx-desc{font-size:13px}
-.tx-meta{font-size:11px;color:#555;font-family:monospace}
-.tx-val{font-size:14px;font-weight:700;font-family:monospace;text-align:right}
-.tx-rm{background:none;border:none;color:#444;cursor:pointer;font-size:11px;display:block}
-.inp{width:100%;padding:12px 14px;background:rgba(12,9,2,.9);border:1px solid rgba(212,175,55,.2);border-radius:10px;color:#F5ECD0;font-size:14px;font-family:inherit;outline:none;margin-top:6px}
-.inplbl{font-size:11px;color:#555;font-family:monospace;margin-top:14px;display:block}
-.trow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
-.tbig{padding:12px;border-radius:10px;font-size:14px;cursor:pointer;font-family:inherit;border:2px solid rgba(212,175,55,.15);background:transparent;color:#555}
-.cats{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
-.cat{padding:5px 10px;border-radius:20px;cursor:pointer;font-size:12px;font-family:inherit;border:1px solid rgba(212,175,55,.15);background:transparent;color:#666}
-.sbmt{width:100%;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:1px;margin-top:14px}
-.empty{text-align:center;color:#555;padding:40px 0;font-size:13px}
-.goAdd{color:#D4AF37;cursor:pointer}
+body{background:#0A0800;font-family:Georgia,serif;color:#F5ECD0}
+#wrap{max-width:480px;margin:0 auto;min-height:100vh;position:relative}
+.hdr{padding:40px 20px 16px;background:rgba(10,7,0,.95);border-bottom:1px solid rgba(212,175,55,.3);position:relative;z-index:1}
+.sub{font-size:10px;letter-spacing:5px;color:#D4AF37;font-family:monospace;text-align:center;display:block;margin-bottom:4px}
+.ttl{font-size:22px;font-weight:700;color:#D4AF37;text-align:center;margin-bottom:16px}
+.mos{display:flex;gap:4px;overflow-x:auto;padding-bottom:2px;margin-bottom:14px}
+.mb{min-width:34px;padding:4px 6px;border-radius:20px;font-size:11px;cursor:pointer;font-family:monospace;border:1px solid rgba(212,175,55,.3);background:transparent;color:#777}
+.mb.a{background:#D4AF37;color:#000;border-color:#D4AF37;font-weight:700}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.gc{border-radius:12px;padding:10px 8px;text-align:center}
+.gl{font-size:10px;color:#555;font-family:monospace;margin-bottom:4px}
+.gv{font-size:11px;font-weight:700;font-family:monospace}
+.tabs{display:flex;background:rgba(5,4,0,.98);border-bottom:1px solid rgba(212,175,55,.2);position:sticky;top:0;z-index:10}
+.tb{flex:1;padding:12px 4px;background:transparent;border:none;border-bottom:2px solid transparent;color:#555;font-size:12px;cursor:pointer;font-family:inherit}
+.tb.a{border-bottom-color:#D4AF37;color:#D4AF37}
+.bd{padding:16px 16px 60px}
+.sc{background:rgba(10,8,1,.92);border:1px solid rgba(212,175,55,.25);border-radius:14px;padding:16px;margin-bottom:14px}
+.st{font-size:11px;color:#D4AF37;font-family:monospace;letter-spacing:2px;margin-bottom:12px}
+.rw{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.bg{height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;margin:3px 0 2px}
+.bf{height:100%;background:linear-gradient(90deg,#8B7320,#D4AF37);border-radius:3px;transition:width .4s}
+.tx{display:flex;align-items:center;gap:12px;background:rgba(10,8,1,.92);border:1px solid rgba(212,175,55,.25);border-radius:12px;padding:12px 14px;margin-bottom:8px}
+.inp{width:100%;padding:12px 14px;background:rgba(12,9,2,.92);border:1px solid rgba(212,175,55,.2);border-radius:10px;color:#F5ECD0;font-size:14px;font-family:inherit;outline:none;-webkit-appearance:none}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.t2{padding:12px;border-radius:10px;font-size:14px;cursor:pointer;font-family:inherit;border:2px solid rgba(212,175,55,.15);background:transparent;color:#555;-webkit-appearance:none}
+.cf{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.ct{padding:5px 10px;border-radius:20px;cursor:pointer;font-size:12px;font-family:inherit;border:1px solid rgba(212,175,55,.15);background:transparent;color:#666;-webkit-appearance:none}
+.sub2{width:100%;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:1px;margin-top:14px;-webkit-appearance:none}
+.em{text-align:center;color:#555;padding:30px 0;font-size:13px}
+.ilbl{font-size:11px;color:#555;font-family:monospace;margin-bottom:6px;display:block}
 </style>
 </head>
 <body>
-<div class="wrap">
-<div class="hdr">
-  <div class="title">
-    <div class="sub">✦ FINANCAS PESSOAIS ✦</div>
-    <div class="main">Controle de Caixa</div>
+<div id="wrap">
+  <div class="hdr">
+    <span class="sub">✦ FINANCAS PESSOAIS ✦</span>
+    <div class="ttl">Controle de Caixa</div>
+    <div class="mos" id="mos"></div>
+    <div class="g3" id="g3"></div>
   </div>
-  <div class="months" id="months"></div>
-  <div class="cards" id="cards"></div>
+  <div class="tabs">
+    <button class="tb a" id="t0" onclick="go('dash')">📊 Visao</button>
+    <button class="tb" id="t1" onclick="go('list')">📋 Lanc.</button>
+    <button class="tb" id="t2" onclick="go('add')">+ Add</button>
+  </div>
+  <div class="bd" id="bd"></div>
 </div>
-<div class="tabs">
-  <button class="tbtn on" onclick="go('dash')">📊 Visao</button>
-  <button class="tbtn" onclick="go('list')">📋 Lanc.</button>
-  <button class="tbtn" onclick="go('add')">+ Add</button>
-</div>
-<div class="body" id="body"></div>
-</div>
-
 <script>
 var G="#D4AF37",GL="#F0D060",GD="#8B7320";
 var MO=["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
-var CE=[{id:"negocio",l:"Negocio",e:"✂️",c:"#D4AF37"},{id:"extra",l:"Renda Extra",e:"💡",c:"#F0D060"},{id:"outros_e",l:"Outros",e:"➕",c:"#BFA030"}];
-var CS=[{id:"moradia",l:"Moradia",e:"🏠",c:"#C0392B"},{id:"alimentacao",l:"Alimentacao",e:"🍽️",c:"#E67E22"},{id:"transporte",l:"Transporte",e:"🚗",c:"#D4AF37"},{id:"saude",l:"Saude",e:"❤️",c:"#E91E8C"},{id:"lazer",l:"Lazer",e:"🎮",c:"#9B59B6"},{id:"educacao",l:"Educacao",e:"📚",c:"#2980B9"},{id:"investimento",l:"Invest.",e:"📈",c:"#D4AF37"},{id:"outros_s",l:"Outros",e:"📦",c:"#7F8C8D"}];
+var CE=[
+  {id:"negocio",l:"Negocio",e:"✂️",c:"#D4AF37"},
+  {id:"extra",l:"Renda Extra",e:"💡",c:"#F0D060"},
+  {id:"outros_e",l:"Outros",e:"➕",c:"#BFA030"}
+];
+var CS=[
+  {id:"moradia",l:"Moradia",e:"🏠",c:"#C0392B"},
+  {id:"alimentacao",l:"Alimentacao",e:"🍽️",c:"#E67E22"},
+  {id:"transporte",l:"Transporte",e:"🚗",c:"#D4AF37"},
+  {id:"saude",l:"Saude",e:"❤️",c:"#E91E8C"},
+  {id:"lazer",l:"Lazer",e:"🎮",c:"#9B59B6"},
+  {id:"educacao",l:"Educacao",e:"📚",c:"#2980B9"},
+  {id:"investimento",l:"Invest.",e:"📈",c:"#D4AF37"},
+  {id:"outros_s",l:"Outros",e:"📦",c:"#7F8C8D"}
+];
 
-var tab="dash", mo=new Date().getMonth();
-var txs=[];
-try{var s=localStorage.getItem("fc");if(s)txs=JSON.parse(s);}catch(e){}
-var form={tp:"saida",cat:"alimentacao",desc:"",val:"",dt:new Date().toISOString().split("T")[0]};
+var tab="dash", mo=new Date().getMonth(), txs=[];
+var form={tp:"saida",cat:"alimentacao"};
 
-function save(){try{localStorage.setItem("fc",JSON.stringify(txs));}catch(e){}}
+try{var sv=localStorage.getItem("fc3");if(sv)txs=JSON.parse(sv);}catch(e){}
+
+function save(){try{localStorage.setItem("fc3",JSON.stringify(txs));}catch(e){}}
 function fm(v){return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});}
-function gc(tp,id){var l=tp==="entrada"?CE:CS;for(var i=0;i<l.length;i++)if(l[i].id===id)return l[i];return{l:id,e:"📦",c:"#888"};}
+function gc(tp,id){
+  var l=tp==="entrada"?CE:CS;
+  for(var i=0;i<l.length;i++)if(l[i].id===id)return l[i];
+  return{l:id,e:"📦",c:"#888"};
+}
+
+function setMo(m){mo=m;draw();}
 
 function go(t){
   tab=t;
-  document.querySelectorAll(".tbtn").forEach(function(b,i){b.classList.toggle("on",["dash","list","add"][i]===t);});
+  document.getElementById("t0").className="tb"+(t==="dash"?" a":"");
+  document.getElementById("t1").className="tb"+(t==="list"?" a":"");
+  document.getElementById("t2").className="tb"+(t==="add"?" a":"");
   draw();
 }
 
-function draw(){
-  // months
-  var mh="";
-  MO.forEach(function(m,i){mh+='<button class="mbtn'+(mo===i?" on":"")+'" onclick="setMo('+i+')">'+m+'</button>';});
-  document.getElementById("months").innerHTML=mh;
+function setTp(t){
+  form.tp=t;
+  form.cat=t==="entrada"?"negocio":"alimentacao";
+  draw();
+}
 
-  // calc
-  var tx=txs.filter(function(t){return new Date(t.dt+"T12:00:00").getMonth()===mo;});
-  var en=0,sa=0;tx.forEach(function(t){t.tp==="entrada"?en+=t.v:sa+=t.v;});
+function setCat(c){form.cat=c;draw();}
+
+function addTx(){
+  var desc=document.getElementById("fd").value.trim();
+  var val=parseFloat(document.getElementById("fv").value);
+  var dt=document.getElementById("ft").value;
+  if(!desc||!val||!dt){alert("Preencha todos os campos!");return;}
+  txs.push({id:Date.now(),tp:form.tp,cat:form.cat,desc:desc,v:val,dt:dt});
+  save();
+  go("dash");
+}
+
+function rmTx(id){
+  if(!confirm("Remover este lancamento?"))return;
+  txs=txs.filter(function(t){return t.id!==id;});
+  save();draw();
+}
+
+function draw(){
+  var tx=txs.filter(function(t){
+    return new Date(t.dt+"T12:00:00").getMonth()===mo;
+  });
+  var en=0,sa=0;
+  tx.forEach(function(t){t.tp==="entrada"?en+=t.v:sa+=t.v;});
   var sl=en-sa;
 
-  // cards
-  var ch='<div class="card" style="background:'+G+'22;border:1px solid '+G+'33"><div class="clbl">Entradas</div><div class="cval" style="color:'+G+'">'+fm(en)+'</div></div>';
-  ch+='<div class="card" style="background:#E74C3C22;border:1px solid #E74C3C33"><div class="clbl">Saidas</div><div class="cval" style="color:#E74C3C">'+fm(sa)+'</div></div>';
-  var sc=sl>=0?G:"#E74C3C";
-  ch+='<div class="card" style="background:'+sc+'22;border:1px solid '+sc+'33"><div class="clbl">Saldo</div><div class="cval" style="color:'+sc+'">'+fm(sl)+'</div></div>';
-  document.getElementById("cards").innerHTML=ch;
+  // Months
+  var mh="";
+  MO.forEach(function(m,i){
+    mh+='<button class="mb'+(mo===i?" a":"")+'" onclick="setMo('+i+')">'+m+'</button>';
+  });
+  document.getElementById("mos").innerHTML=mh;
 
-  // body
+  // Cards
+  var sc=sl>=0?G:"#E74C3C";
+  document.getElementById("g3").innerHTML=
+    '<div class="gc" style="background:'+G+'22;border:1px solid '+G+'33"><div class="gl">Entradas</div><div class="gv" style="color:'+G+'">'+fm(en)+'</div></div>'+
+    '<div class="gc" style="background:#E74C3C22;border:1px solid #E74C3C33"><div class="gl">Saidas</div><div class="gv" style="color:#E74C3C">'+fm(sa)+'</div></div>'+
+    '<div class="gc" style="background:'+sc+'22;border:1px solid '+sc+'33"><div class="gl">Saldo</div><div class="gv" style="color:'+sc+'">'+fm(sl)+'</div></div>';
+
+  // Body
   var bh="";
+
   if(tab==="dash"){
-    var cm={};tx.filter(function(t){return t.tp==="saida";}).forEach(function(t){cm[t.cat]=(cm[t.cat]||0)+t.v;});
+    var cm={};
+    tx.filter(function(t){return t.tp==="saida";}).forEach(function(t){
+      cm[t.cat]=(cm[t.cat]||0)+t.v;
+    });
     var bc=Object.entries(cm).sort(function(a,b){return b[1]-a[1];});
     var mx=bc.length?bc[0][1]:1;
-    bh+='<div class="sec"><div class="stitle">◆ ONDE FOI O DINHEIRO</div>';
-    if(!bc.length)bh+='<div class="empty">Nenhuma saida.<br><span class="goAdd" onclick="go('add')">+ Adicionar</span></div>';
-    bc.forEach(function(e){
-      var cat=gc("saida",e[0]);var pct=Math.round(e[1]/mx*100);
-      bh+='<div style="margin-bottom:10px"><div class="row"><span style="font-size:13px">'+cat.e+" "+cat.l+'</span><span style="font-size:13px;color:'+G+';font-family:monospace">'+fm(e[1])+'</span></div>';
-      bh+='<div class="bar-bg"><div class="bar-fill" style="width:'+pct+'%"></div></div>';
-      bh+='<div style="font-size:10px;color:#444;text-align:right;font-family:monospace">'+Math.round(e[1]/(sa||1)*100)+'%</div></div>';
-    });
+
+    bh+='<div class="sc"><div class="st">◆ ONDE FOI O DINHEIRO</div>';
+    if(!bc.length){
+      bh+='<div class="em">Nenhuma saida ainda.<br><span style="color:'+G+';cursor:pointer" onclick="go('add')">+ Adicionar lancamento</span></div>';
+    } else {
+      bc.forEach(function(e){
+        var cat=gc("saida",e[0]);
+        var p=Math.round(e[1]/mx*100);
+        bh+='<div style="margin-bottom:10px">';
+        bh+='<div class="rw"><span style="font-size:13px">'+cat.e+" "+cat.l+'</span><span style="font-size:13px;color:'+G+';font-family:monospace">'+fm(e[1])+'</span></div>';
+        bh+='<div class="bg"><div class="bf" style="width:'+p+'%"></div></div>';
+        bh+='<div style="font-size:10px;color:#444;text-align:right;font-family:monospace">'+Math.round(e[1]/(sa||1)*100)+'%</div>';
+        bh+='</div>';
+      });
+    }
     bh+='</div>';
-    var gp=sa>0?Math.round(sa/(en||1)*100):0;var sp=sl>=0?Math.round(sl/(en||1)*100):0;
-    bh+='<div class="sec"><div class="stitle">◆ SAUDE FINANCEIRA</div>';
-    bh+='<div class="row"><span class="lbl">Voce gastou</span><span class="val" style="color:'+(gp>80?"#E74C3C":G)+'">'+gp+'% da renda</span></div>';
-    bh+='<div class="row"><span class="lbl">Sobrou</span><span class="val" style="color:'+G+'">'+sp+'% guardado</span></div>';
-    var msg=sl>=0?"✦ Bom trabalho! "+fm(sl)+" disponivel.":"⚠️ Saidas superam em "+fm(Math.abs(sl))+".";
-    bh+='<div style="padding:10px 12px;border-radius:8px;background:'+(sl>=0?"rgba(212,175,55,.1)":"rgba(231,76,60,.1)")+';border:1px solid '+(sl>=0?G+"44":"#E74C3C44")+';font-size:12px;color:'+(sl>=0?GL:"#E74C3C")+'">'+msg+'</div></div>';
-    bh+='<div class="tip"><div class="tiplbl">💡 DICA</div><p class="tipt">Guarde <strong style="color:#F5ECD0">20-30%</strong> de tudo que entrar antes de pagar contas.</p></div>';
+
+    var gp=sa>0?Math.round(sa/(en||1)*100):0;
+    var sp=sl>=0?Math.round(sl/(en||1)*100):0;
+    bh+='<div class="sc"><div class="st">◆ SAUDE FINANCEIRA</div>';
+    bh+='<div class="rw"><span style="font-size:13px;color:#999">Voce gastou</span><span style="font-size:14px;font-weight:700;font-family:monospace;color:'+(gp>80?"#E74C3C":G)+'">'+gp+'% da renda</span></div>';
+    bh+='<div class="rw"><span style="font-size:13px;color:#999">Sobrou</span><span style="font-size:14px;font-weight:700;font-family:monospace;color:'+G+'">'+sp+'% guardado</span></div>';
+    bh+='<div style="padding:10px 12px;border-radius:8px;margin-top:4px;background:'+(sl>=0?"rgba(212,175,55,.1)":"rgba(231,76,60,.1)")+';border:1px solid '+(sl>=0?G+"44":"#E74C3C44")+';font-size:12px;color:'+(sl>=0?GL:"#E74C3C")+'">';
+    bh+=(sl>=0?"✦ Bom trabalho! "+fm(sl)+" disponivel.":"⚠️ Saidas superam em "+fm(Math.abs(sl))+".")+'</div></div>';
+
+    bh+='<div style="background:rgba(6,4,14,.9);border:1px solid rgba(212,175,55,.15);border-radius:14px;padding:14px">';
+    bh+='<div style="font-size:11px;color:'+GL+';font-family:monospace;letter-spacing:2px;margin-bottom:6px">💡 DICA</div>';
+    bh+='<p style="font-size:12px;color:#888;line-height:1.7">Guarde <strong style="color:#F5ECD0">20-30%</strong> de tudo antes de pagar contas.</p></div>';
   }
 
   if(tab==="list"){
     bh+='<div style="font-size:11px;color:#555;margin-bottom:12px;font-family:monospace">'+tx.length+' lancamentos em '+MO[mo]+'</div>';
-    if(!tx.length)bh+='<div class="empty">Nenhum lancamento.<br><span class="goAdd" onclick="go('add')">+ Adicionar</span></div>';
-    tx.slice().reverse().forEach(function(t){
-      var cat=gc(t.tp,t.cat);
-      bh+='<div class="tx" style="border-left:3px solid '+(t.tp==="entrada"?G:"#E74C3C")+'">';
-      bh+='<div class="tx-ico">'+cat.e+'</div>';
-      bh+='<div class="tx-info"><div class="tx-desc">'+t.desc+'</div><div class="tx-meta">'+cat.l+' · '+new Date(t.dt+"T12:00:00").toLocaleDateString("pt-BR")+'</div></div>';
-      bh+='<div><div class="tx-val" style="color:'+(t.tp==="entrada"?G:"#E74C3C")+'">'+(t.tp==="entrada"?"+":"-")+fm(t.v)+'</div><button class="tx-rm" onclick="rm('+t.id+')">remover</button></div></div>';
-    });
+    if(!tx.length){
+      bh+='<div class="em">Nenhum lancamento.<br><span style="color:'+G+';cursor:pointer" onclick="go('add')">+ Adicionar</span></div>';
+    } else {
+      tx.slice().reverse().forEach(function(t){
+        var cat=gc(t.tp,t.cat);
+        bh+='<div class="tx" style="border-left:3px solid '+(t.tp==="entrada"?G:"#E74C3C")+'">';
+        bh+='<span style="font-size:22px">'+cat.e+'</span>';
+        bh+='<div style="flex:1"><div style="font-size:13px">'+t.desc+'</div>';
+        bh+='<div style="font-size:11px;color:#555;font-family:monospace">'+cat.l+' · '+new Date(t.dt+"T12:00:00").toLocaleDateString("pt-BR")+'</div></div>';
+        bh+='<div style="text-align:right">';
+        bh+='<div style="font-size:14px;font-weight:700;font-family:monospace;color:'+(t.tp==="entrada"?G:"#E74C3C")+'">'+(t.tp==="entrada"?"+":"-")+fm(t.v)+'</div>';
+        bh+='<button onclick="rmTx('+t.id+')" style="background:none;border:none;color:#444;cursor:pointer;font-size:11px">remover</button>';
+        bh+='</div></div>';
+      });
+    }
   }
 
   if(tab==="add"){
     var cats=form.tp==="entrada"?CE:CS;
-    bh+='<div class="stitle" style="color:'+G+';font-family:monospace;letter-spacing:2px;font-size:11px;margin-bottom:16px">◆ NOVO LANCAMENTO</div>';
-    bh+='<div class="trow">';
-    bh+='<button class="tbig" onclick="setTp('entrada')" style="'+(form.tp==="entrada"?"background:#D4AF3722;border-color:#D4AF37;color:#D4AF37":"")+'">💰 Entrada</button>';
-    bh+='<button class="tbig" onclick="setTp('saida')" style="'+(form.tp==="saida"?"background:#E74C3C22;border-color:#E74C3C;color:#E74C3C":"")+'">💸 Saida</button>';
+    bh+='<div style="font-size:11px;color:'+G+';font-family:monospace;letter-spacing:2px;margin-bottom:16px">◆ NOVO LANCAMENTO</div>';
+    bh+='<div class="g2">';
+    bh+='<button class="t2" onclick="setTp('entrada')" style="'+(form.tp==="entrada"?"background:#D4AF3722;border-color:#D4AF37;color:#D4AF37":"")+'">💰 Entrada</button>';
+    bh+='<button class="t2" onclick="setTp('saida')" style="'+(form.tp==="saida"?"background:#E74C3C22;border-color:#E74C3C;color:#E74C3C":"")+'">💸 Saida</button>';
     bh+='</div>';
-    bh+='<div><span class="inplbl">CATEGORIA</span><div class="cats">';
-    cats.forEach(function(c){bh+='<button class="cat" onclick="setCat(''+c.id+'')" style="'+(form.cat===c.id?"background:"+c.c+"22;border-color:"+c.c+";color:"+c.c:"")+'">'+c.e+" "+c.l+'</button>';});
+    bh+='<div style="margin-bottom:14px"><span class="ilbl">CATEGORIA</span><div class="cf">';
+    cats.forEach(function(c){
+      bh+='<button class="ct" onclick="setCat(''+c.id+'')" style="'+(form.cat===c.id?"background:"+c.c+"22;border-color:"+c.c+";color:"+c.c:"")+'">'+c.e+" "+c.l+'</button>';
+    });
     bh+='</div></div>';
-    bh+='<span class="inplbl">DESCRICAO</span><input class="inp" type="text" placeholder="Ex: Supermercado" value="'+form.desc+'" oninput="form.desc=this.value">';
-    bh+='<span class="inplbl">VALOR (R$)</span><input class="inp" type="number" placeholder="0,00" value="'+form.val+'" oninput="form.val=this.value">';
-    bh+='<span class="inplbl">DATA</span><input class="inp" type="date" value="'+form.dt+'" oninput="form.dt=this.value">';
-    var btnbg=form.tp==="entrada"?"linear-gradient(135deg,"+GD+","+G+")":"linear-gradient(135deg,#7F1D1D,#E74C3C)";
-    var btnc=form.tp==="entrada"?"#000":"#fff";
-    bh+='<button class="sbmt" onclick="add()" style="background:'+btnbg+';color:'+btnc+'">'+(form.tp==="entrada"?"✦ Registrar Entrada":"✦ Registrar Saida")+'</button>';
+    bh+='<div style="margin-bottom:14px"><span class="ilbl">DESCRICAO</span><input id="fd" class="inp" type="text" placeholder="Ex: Supermercado"></div>';
+    bh+='<div style="margin-bottom:14px"><span class="ilbl">VALOR (R$)</span><input id="fv" class="inp" type="number" placeholder="0,00" inputmode="decimal"></div>';
+    bh+='<div style="margin-bottom:14px"><span class="ilbl">DATA</span><input id="ft" class="inp" type="date" value="'+new Date().toISOString().split("T")[0]+'"></div>';
+    var bg=form.tp==="entrada"?"linear-gradient(135deg,"+GD+","+G+")":"linear-gradient(135deg,#7F1D1D,#E74C3C)";
+    bh+='<button class="sub2" onclick="addTx()" style="background:'+bg+';color:'+(form.tp==="entrada"?"#000":"#fff")+'">'+(form.tp==="entrada"?"✦ Registrar Entrada":"✦ Registrar Saida")+'</button>';
   }
 
-  document.getElementById("body").innerHTML=bh;
+  document.getElementById("bd").innerHTML=bh;
 }
-
-function setMo(m){mo=m;draw();}
-function setTp(t){form.tp=t;form.cat=t==="entrada"?"negocio":"alimentacao";draw();}
-function setCat(c){form.cat=c;draw();}
-function add(){
-  if(!form.desc||!form.val||!form.dt)return;
-  txs.push({id:Date.now(),tp:form.tp,cat:form.cat,desc:form.desc,v:parseFloat(form.val),dt:form.dt});
-  save();form.desc="";form.val="";go("dash");
-}
-function rm(id){txs=txs.filter(function(t){return t.id!==id;});save();draw();}
 
 draw();
 </script>
